@@ -6,9 +6,9 @@
 # Enable Rewrite Engine
 RewriteEngine On
 
-# Force HTTPS (uncomment when SSL is active)
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # ==========================================
 # Caching Headers for Static Assets
