@@ -55,7 +55,7 @@ The AI assistant uses keyword matching to recommend dishes:
 To change the WhatsApp number, update `WHATSAPP_NUMBER` in `js/main.js`:
 
 ```javascript
-const WHATSAPP_NUMBER = "26771234567"; // Change this
+const WHATSAPP_NUMBER = "26778496552"; // Change this
 ```
 
 ## Tech Stack
