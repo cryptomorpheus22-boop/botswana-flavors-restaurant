@@ -111,7 +111,7 @@ const chefsSpecial = {
 };
 
 // WhatsApp Configuration
-const WHATSAPP_NUMBER = "26771234567";
+const WHATSAPP_NUMBER = "26778496552";
 
 // ========================================
 // Utility Functions
