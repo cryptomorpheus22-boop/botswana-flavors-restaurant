@@ -14,7 +14,7 @@ const menuItems = [
         price: 85,
         keywords: ["spicy", "hot", "beef", "seswaa", "peri", "fire"],
         category: "spicy",
-        emoji: "🌶️"
+        emoji: "\uD83C\uDF36\uFE0F"
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ const menuItems = [
         price: 75,
         keywords: ["spicy", "hot", "chicken", "peri", "grilled", "fire"],
         category: "spicy",
-        emoji: "🔥"
+        emoji: "\uD83D\uDD25"
     },
     {
         id: 3,
@@ -32,7 +32,7 @@ const menuItems = [
         price: 55,
         keywords: ["vegan", "vegetarian", "healthy", "greens", "beans", "plant"],
         category: "vegan",
-        emoji: "🌱"
+        emoji: "\uD83C\uDF31"
     },
     {
         id: 4,
@@ -41,7 +41,7 @@ const menuItems = [
         price: 50,
         keywords: ["vegan", "vegetarian", "healthy", "vegetables", "plant", "colorful"],
         category: "vegan",
-        emoji: "🥗"
+        emoji: "\uD83E\uDD57"
     },
     {
         id: 5,
@@ -50,7 +50,7 @@ const menuItems = [
         price: 180,
         keywords: ["family", "sharing", "group", "party", "braai", "grill", "big"],
         category: "family",
-        emoji: "👨‍👩‍👧‍👦"
+        emoji: "\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67\u200D\uD83D\uDC66"
     },
     {
         id: 6,
@@ -59,7 +59,7 @@ const menuItems = [
         price: 220,
         keywords: ["family", "sharing", "group", "mixed", "grill", "premium", "big"],
         category: "family",
-        emoji: "🍖"
+        emoji: "\uD83C\uDF56"
     },
     {
         id: 7,
@@ -68,7 +68,7 @@ const menuItems = [
         price: 70,
         keywords: ["traditional", "classic", "seswaa", "beef", "authentic", "grandmother"],
         category: "traditional",
-        emoji: "🍽️"
+        emoji: "\uD83C\uDF7D\uFE0F"
     },
     {
         id: 8,
@@ -77,7 +77,7 @@ const menuItems = [
         price: 65,
         keywords: ["traditional", "mogodu", "tripe", "authentic", "classic", "delicacy"],
         category: "traditional",
-        emoji: "🥘"
+        emoji: "\uD83E\uDD58"
     },
     {
         id: 9,
@@ -86,7 +86,7 @@ const menuItems = [
         price: 45,
         keywords: ["traditional", "dikgobe", "beans", "samp", "comfort", "hearty", "home"],
         category: "traditional",
-        emoji: "🫘"
+        emoji: "\uD83E\uDED8"
     },
     {
         id: 10,
@@ -95,7 +95,7 @@ const menuItems = [
         price: 35,
         keywords: ["fatcakes", "fat cakes", "snack", "mince", "comfort", "fried", "dough"],
         category: "fatcakes",
-        emoji: "🍰"
+        emoji: "\uD83C\uDF70"
     }
 ];
 
@@ -107,7 +107,7 @@ const chefsSpecial = {
     price: 75,
     keywords: [],
     category: "special",
-    emoji: "👨‍🍳"
+    emoji: "\uD83D\uDC68\u200D\uD83C\uDF73"
 };
 
 // WhatsApp Configuration
