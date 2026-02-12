@@ -26,7 +26,7 @@ demo-restaurant-site/
 │   └── main.js         # Interactivity & AI assistant
 ├── images/
 │   └── hero-food.png   # Hero section image
-├── netlify.toml        # Deployment config
+
 └── README.md           # This file
 ```
 
@@ -44,11 +44,10 @@ The AI assistant uses keyword matching to recommend dishes:
 
 ## Deployment
 
-### Netlify
-
+### cPanel / Shared Hosting
 1. Push to GitHub
-2. Connect repository to Netlify
-3. Deploy automatically (no build step required)
+2. Git Pull changes on cPanel or upload via File Manager
+3. Ensure .htaccess is configured for routing
 
 ## WhatsApp Configuration
 
