@@ -184,20 +184,12 @@ function findRecommendation(query) {
 }
 
 // ========================================
-// DOM Elements
+// DOM Elements (resolved inside init)
 // ========================================
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.getElementById('navLinks');
-const assistantInput = document.getElementById('assistantInput');
-const askAssistantBtn = document.getElementById('askAssistant');
-const assistantLoading = document.getElementById('assistantLoading');
-const recommendationCard = document.getElementById('recommendationCard');
-const noMatchCard = document.getElementById('noMatchCard');
-const recommendationName = document.getElementById('recommendationName');
-const recommendationDescription = document.getElementById('recommendationDescription');
-const recommendationPrice = document.getElementById('recommendationPrice');
-const orderRecommendation = document.getElementById('orderRecommendation');
-const categoryPills = document.querySelectorAll('.pill');
+let mobileMenuBtn, navLinks, assistantInput, askAssistantBtn;
+let assistantLoading, recommendationCard, noMatchCard;
+let recommendationName, recommendationDescription, recommendationPrice;
+let orderRecommendation, categoryPills;
 
 // ========================================
 // Event Handlers
@@ -222,10 +214,16 @@ function handleInputChange() {
 /**
  * Handle Smart Assistant submission
  */
-async function handleAskAssistant() {
-    const query = assistantInput.value.trim();
+let isAssistantProcessing = false;
 
+async function handleAskAssistant() {
+    // Prevent duplicate calls
+    if (isAssistantProcessing) return;
+
+    const query = assistantInput.value.trim();
     if (query.length < 5) return;
+
+    isAssistantProcessing = true;
 
     // Hide previous results
     recommendationCard.hidden = true;
@@ -245,6 +243,7 @@ async function handleAskAssistant() {
     // Hide loading
     assistantLoading.hidden = true;
     askAssistantBtn.disabled = false;
+    isAssistantProcessing = false;
 
     // Display result
     if (score > 0 || dish.id === 0) {
@@ -269,6 +268,7 @@ async function handleAskAssistant() {
  */
 function handleCategoryClick(event) {
     const pill = event.target;
+    if (!pill.classList.contains('pill')) return;
 
     // Update active state
     categoryPills.forEach(p => p.classList.remove('active'));
@@ -314,6 +314,20 @@ function handleNavLinkClick() {
 // Initialize Event Listeners
 // ========================================
 function init() {
+    // Resolve DOM elements
+    mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    navLinks = document.getElementById('navLinks');
+    assistantInput = document.getElementById('assistantInput');
+    askAssistantBtn = document.getElementById('askAssistant');
+    assistantLoading = document.getElementById('assistantLoading');
+    recommendationCard = document.getElementById('recommendationCard');
+    noMatchCard = document.getElementById('noMatchCard');
+    recommendationName = document.getElementById('recommendationName');
+    recommendationDescription = document.getElementById('recommendationDescription');
+    recommendationPrice = document.getElementById('recommendationPrice');
+    orderRecommendation = document.getElementById('orderRecommendation');
+    categoryPills = document.querySelectorAll('.pill');
+
     // Mobile menu toggle
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', handleMobileMenuToggle);
@@ -324,13 +338,17 @@ function init() {
         link.addEventListener('click', handleNavLinkClick);
     });
 
-    // Smart Assistant input
+    // Smart Assistant input — clear any stale localStorage value
     if (assistantInput) {
+        // Always start fresh — no pre-filled stale queries
+        assistantInput.value = '';
+        localStorage.removeItem('lastAssistantQuery');
+
         assistantInput.addEventListener('input', handleInputChange);
         assistantInput.addEventListener('keydown', handleInputKeydown);
     }
 
-    // Ask Assistant button
+    // Ask Assistant button (single handler — no override needed)
     if (askAssistantBtn) {
         askAssistantBtn.addEventListener('click', handleAskAssistant);
     }
@@ -359,29 +377,6 @@ function init() {
             }
         });
     });
-
-    // Optional: Store last query in localStorage
-    const lastQuery = localStorage.getItem('lastAssistantQuery');
-    if (lastQuery && assistantInput) {
-        assistantInput.value = lastQuery;
-        handleInputChange();
-    }
-}
-
-// Save query to localStorage on submission
-const originalHandleAskAssistant = handleAskAssistant;
-async function handleAskAssistantWithStorage() {
-    const query = assistantInput.value.trim();
-    if (query) {
-        localStorage.setItem('lastAssistantQuery', query);
-    }
-    await originalHandleAskAssistant();
-}
-
-// Override the handler
-if (askAssistantBtn) {
-    askAssistantBtn.removeEventListener('click', handleAskAssistant);
-    askAssistantBtn.addEventListener('click', handleAskAssistantWithStorage);
 }
 
 // Initialize on DOM ready
